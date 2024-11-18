@@ -18,7 +18,7 @@ public class StudentService {
         return studentRep.save(student);
     }
     public boolean delete(int id) {
-        Optional<Student> studentOpt = studentRep.findById(id);
+        Optional<Student> studentOpt = Optional.ofNullable(studentRep.findById(id));
         if (studentOpt.isPresent()) {
             studentRep.delete(studentOpt.get());
             return true;
@@ -29,7 +29,7 @@ public class StudentService {
         public List<Student> findAll () {
             return studentRep.findAll();
         }
-        public Long contStudent () {
+        public Long countStudent () {
             return studentRep.count();
         }
     public Collection<?> findNbrStudentByYear(){

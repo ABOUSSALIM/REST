@@ -11,12 +11,12 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
-@RequestMapping("students")
+@RequestMapping("/students")
 public class StudentController {
     @Autowired
     private StudentService studentServ ;
     @PostMapping("/save")
-    public ResponseEntity<Student> save(@RequestBody Student student){
+    public ResponseEntity<Student> save(@RequestBody Student student ){
         Student saveStudent = studentServ.save(student);
         return new ResponseEntity<>(saveStudent ,HttpStatus.CREATED);
     }
@@ -35,8 +35,8 @@ public class StudentController {
         return new ResponseEntity<>(students,HttpStatus.OK);
     }
     @GetMapping("/count")
-    public ResponseEntity<Long> countStudewnt(){
-        long count = studentServ.contStudent();
+    public ResponseEntity<Long> countStudent(){
+        long count = studentServ.countStudent();
         return new ResponseEntity<>(count,HttpStatus.OK);
     }
     @GetMapping("/byYear")
